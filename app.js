@@ -6,9 +6,18 @@ const fetchProducts = async () => {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
+    return data;
   } catch (error) {
     productsDOM.innerHTML = `<p class="error">There was an error!</p>`;
   }
 };
-fetchProducts();
+
+const displayProducts = (list) => {
+  console.log(list);
+};
+
+const start = async () => {
+  const data = await fetchProducts();
+  displayProducts(data);
+};
+start();
