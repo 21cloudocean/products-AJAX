@@ -27,6 +27,7 @@ const displayProduct = (product) => {
     company,
   } = product.fields;
   const { url: img } = product.fields.image[0];
+  const realPrice = price / 100;
   //color
   const productColor = colors
     .map((color) => {
@@ -41,7 +42,7 @@ const displayProduct = (product) => {
         <div class="product-info">
           <h3>${title}</h3>
           <h5>${company}</h5>
-          <span>$${price}</span>
+          <span>$${realPrice}</span>
           <div class="colors">
             ${productColor}
           </div>
