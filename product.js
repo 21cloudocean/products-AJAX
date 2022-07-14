@@ -18,6 +18,39 @@ const fetchProduct = async () => {
 
 const displayProduct = (product) => {
   console.log(product);
+  // name:title, price, image(url:img), colors, company, text
+  const {
+    name: title,
+    price,
+    description: text,
+    colors,
+    company,
+  } = product.fields;
+  const { url: img } = product.fields.image[0];
+  //color
+  const productColor = colors
+    .map((color) => {
+      return `<span class="product-color" style="background: ${color}"></span>`;
+    })
+    .join("");
+  //change the page title
+  document.title = title.toUpperCase();
+
+  productDOM.innerHTML = `      <div class="product-wrapper">
+        <img src="${img}" class="img" alt="${title}" />
+        <div class="product-info">
+          <h3>${title}</h3>
+          <h5>${company}</h5>
+          <span>$${price}</span>
+          <div class="colors">
+            ${productColor}
+          </div>
+          <p>
+${text}
+          </p>
+          <button class="btn">add to cart</button>
+        </div>
+      </div>`;
 };
 
 const start = async () => {
